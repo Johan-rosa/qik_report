@@ -14,6 +14,7 @@ params:
 ---
 
 ```{r setup, include=FALSE}
+library(reactable)
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 ```
 
@@ -84,7 +85,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 :::{.general-summary .border .d-flex .p-3    .rounded-1}
 
 ::: {.summary-section .d-flex .flex-grow-1 .gap-1}
-<div class="border rounded-1 p-3 d-inline">`r shiny::icon("basket-shopping", class = "fa-light")`</div>
+<div class="border rounded-1 px-3 d-flex align-items-center">`r shiny::icon("basket-shopping", class = "fa-light")`</div>
 ::: {.summary-details}
 <span class="cf-title">Compras y retiros</span><br>
 RD$ 15,584.77
@@ -92,7 +93,7 @@ RD$ 15,584.77
 :::
 
 ::: {.summary-section .d-flex .flex-grow-1 .gap-1}
-<div class="border rounded-1 p-3 d-inline">`r shiny::icon("money-bill-1", class = "fa-light")`</div>
+<div class="border rounded-1 px-3 d-flex align-items-center">`r shiny::icon("money-bill-1", class = "fa-light")`</div>
 ::: {.summary-details}
 <span class="cf-title">Compras y retiros</span><br>
 RD$ 15,584.77
@@ -100,7 +101,7 @@ RD$ 15,584.77
 :::
 
 ::: {.summary-section .d-flex .flex-grow-1 .gap-1}
-<div class="border rounded-1 p-3 d-inline">`r shiny::icon("circle-dollar-to-slot", class = "fa-light")`</div>
+<div class="border rounded-1 px-3 d-flex align-items-center">`r shiny::icon("circle-dollar-to-slot", class = "fa-light")`</div>
 ::: {.summary-details}
 <span class="cf-title">Compras y retiros</span><br>
 RD$ 15,584.77
@@ -108,6 +109,23 @@ RD$ 15,584.77
 :::
 
 :::
-
 
 <!-------------------- table ------------------------->
+```{r}
+consumos <- readRDS(here::here("consumos.rds"))
+```
+
+```{r}
+consumos |>
+  reactable(
+    defaultColDef = colDef(headerClass = "header"),
+    columns = list(
+      fecha = colDef(name = "Fecha", minWidth = 45),
+      entrada = colDef(name = "Entrada", minWidth = 45),
+      monto = colDef(name = "Monto", minWidth = 45)
+    ),
+    class = "qik-table",
+    pagination = FALSE
+  )
+```
+
