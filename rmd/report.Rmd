@@ -1,0 +1,113 @@
+---
+output:
+  html_document:
+    css: "style.css"
+    theme:
+      version: 5
+params:
+  name: Johan Felix Rosa Pérez
+  mes: Febrero
+  numero_tarjeta: 6548
+  periodo: 26 feb - 25 mar 2024
+  corte: 25 mar 2024
+  limite: 69000
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+<!--------------------    Document brand banner     -------------------->
+
+:::{#banner .d-flex .justify-content-between .align-items-center .my-3}
+
+![](../assets/logo_qik.png){width=50px}
+
+![](../assets/logo_mastercard.svg){width=50px}
+:::
+
+<!--------------------    Costumer information     -------------------->
+
+:::{#header .d-flex .justify-content-between}
+:::{#header-left}
+<spam class="fs-2 fw-bold"> Hola, `r params$name`</spam>
+
+<spam class="fs-6">Este es tu estado de cuenta de `r params$mes`</spam>
+
+<spam class="small">Número de tarjeta:</spam> <br>
+<spam class="small">\*\*\*\*\*\*\*\*`r params$numero_tarjeta`</spam>
+:::
+
+:::{#header-right .text-end}
+<spam class="text-end small">Período: `r params$periodo`</spam> <br>
+<spam class="text-end small fw-bold">Fecha de corte: `r params$corte`</spam> <br>
+<spam class="text-end small">Límite Aprobado: RD$ `r scales::comma(params$limite)`</spam>
+:::
+:::
+
+<!--------------------    Cashflow Summary     -------------------->
+
+:::{#cashflow-summary .d-flex .p-4 .bg-light .border .rounded-1}
+
+:::{.cf-summary-section .flex-grow-1 .text-center .divider-right}
+<span class="cf-title small">Fecha límite de pago</span>
+
+<span class="cf-content fw-bold">22 mar 2024</span>
+:::
+
+:::{.cf-summary-section .flex-grow-1 .text-center .divider-right}
+<span class="cf-title small">Balance al corte</span>
+
+<span class="cf-content fw-bold">RD$ 15,422.86</span>
+:::
+
+:::{.cf-summary-section .flex-grow-1 .text-center .divider-right}
+<span class="cf-title small">Monto mínimo a pagar</span>
+
+<span class="cf-content fw-bold">RD$ 428.41</span>
+:::
+
+:::{.cf-summary-section .flex-grow-1 .text-center}
+<span class="cf-title small">Balance al corte anterior</span>
+
+<span class="cf-content fw-bold">RD$ 22,321.72</span>
+:::
+:::
+
+<!---------------------------------------------------------------->
+
+<span class= "text-center"> Resumen de lo que pasó en el periodo </span>
+
+
+<!-------------------- Banner con iconos ------------------------->
+
+:::{.general-summary .border .d-flex .p-3    .rounded-1}
+
+::: {.summary-section .d-flex .flex-grow-1 .gap-1}
+<div class="border rounded-1 p-3 d-inline">`r shiny::icon("basket-shopping", class = "fa-light")`</div>
+::: {.summary-details}
+<span class="cf-title">Compras y retiros</span><br>
+RD$ 15,584.77
+:::
+:::
+
+::: {.summary-section .d-flex .flex-grow-1 .gap-1}
+<div class="border rounded-1 p-3 d-inline">`r shiny::icon("money-bill-1", class = "fa-light")`</div>
+::: {.summary-details}
+<span class="cf-title">Compras y retiros</span><br>
+RD$ 15,584.77
+:::
+:::
+
+::: {.summary-section .d-flex .flex-grow-1 .gap-1}
+<div class="border rounded-1 p-3 d-inline">`r shiny::icon("circle-dollar-to-slot", class = "fa-light")`</div>
+::: {.summary-details}
+<span class="cf-title">Compras y retiros</span><br>
+RD$ 15,584.77
+:::
+:::
+
+:::
+
+
+<!-------------------- table ------------------------->
